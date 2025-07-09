@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcpxxyc167e3"]
+
+[ext_resource type="Script" uid="uid://bfbqeiqwo5s83" path="res://scenes/killzone.gd" id="1_xlapc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_csqde"]
+
+[node name="killzone" type="Area2D"]
+script = ExtResource("1_xlapc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_csqde")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="HIT" from="." to="." method="_on_hit"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

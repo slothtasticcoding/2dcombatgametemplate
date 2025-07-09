@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://p1s6kheomq53"]
+
+[ext_resource type="Texture2D" uid="uid://bd048yfyoqjpm" path="res://assets/pixil-frame-0 (5).png" id="1_5yfef"]
+[ext_resource type="Script" uid="uid://bjyej0gmrx8bj" path="res://scenes/enem_test.gd" id="1_ro566"]
+[ext_resource type="PackedScene" uid="uid://bcpxxyc167e3" path="res://scenes/killzone.tscn" id="2_el0sr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el0sr"]
+size = Vector2(20.0513, 12.7069)
+
+[node name="Node2D" type="Node2D" groups=["Enemys"]]
+script = ExtResource("1_ro566")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5yfef")
+
+[node name="killzone" parent="." groups=["Enemys"] instance=ExtResource("2_el0sr")]
+position = Vector2(0, 8)
+scale = Vector2(1.63688, 0.944369)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="killzone" index="0"]
+position = Vector2(2.73102e-07, 2.11782)
+scale = Vector2(0.853098, 1)
+shape = SubResource("RectangleShape2D_el0sr")
+
+[connection signal="HIT" from="killzone" to="." method="_on_killzone_hit"]
+
+[editable path="killzone"]
